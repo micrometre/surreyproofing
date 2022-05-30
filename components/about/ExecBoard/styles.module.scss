@@ -1,0 +1,124 @@
+@import '../../../variables.scss';
+
+@mixin img-styles() {
+  border-radius: 50%;
+  border: solid $primary $border-width;
+}
+
+.list_container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 140px);
+  justify-content: center;
+  gap: 48px 36px;
+
+  @include screen('tablet-small') {
+    grid-template-columns: repeat(auto-fill, 250px);
+  }
+
+  .member_container {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+    padding: 0;
+
+    &:hover > img {
+      transform: scale(1.1);
+    }
+
+    h3 {
+      font-size: $body;
+      margin: 0;
+    }
+    p {
+      font-size: inherit;
+    }
+    img {
+      @include img-styles;
+      transition: transform 0.3s;
+      height: 130px;
+      width: 130px;
+      margin-bottom: 8px;
+    }
+    .about_button {
+      margin-top: auto;
+      width: 100%;
+      font-size: inherit;
+      font-family: inherit;
+      color: $accent;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: $border-radius;
+      overflow: hidden;
+
+      svg {
+        margin-right: -6px;
+      }
+    }
+
+    @include screen('tablet-small') {
+      font-size: $body;
+      h3 {
+        font-size: $h4;
+      }
+      img {
+        height: 180px;
+        width: 180px;
+      }
+      .about_button {
+        font-size: $body;
+      }
+    }
+  }
+}
+
+.modal_content {
+  padding: 3vmin;
+  border-radius: $border-radius;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .close_button_container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  img {
+    @include img-styles;
+  }
+  hgroup {
+    text-align: center;
+    h1 {
+      font-size: $h3;
+      margin-bottom: 8px;
+    }
+    h2 {
+      font-size: $body;
+      font-weight: normal;
+      margin-top: 0;
+      margin-bottom: 24px;
+    }
+  }
+  .links {
+    display: flex;
+    justify-content: center;
+    a,
+    a:visited {
+      font-weight: bold;
+      color: $accent;
+      margin: 0 10px;
+      margin-bottom: 24px;
+    }
+  }
+  div {
+    line-height: 1.3;
+  }
+}
+
+.modal_backdrop {
+  background: rgba($primary-dark, 0.5);
+  backdrop-filter: blur(8px);
+}
